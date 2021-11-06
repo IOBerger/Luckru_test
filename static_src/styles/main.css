@@ -15,7 +15,7 @@ body {
     width: 750px;
     margin: 0 auto;
     padding: 20px;
-    font: 16pt sans-serif;
+    font: 13pt sans-serif;
 }
 
 #root {
@@ -41,6 +41,7 @@ button {
 
 .header-addPhone {
     text-align: center;
+    font: 16pt sans-serif;
 }
 
 .button-addPhone {
@@ -62,4 +63,23 @@ button {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.table-phones {
+    width: 100%;
+    border-width: 0px;
+    border-collapse: collapse;
+}
+
+.table-phones-cell {
+    width: 25%;
+    border-width: 0px;
+}
+
+.table-phones tr:nth-of-type(even) {
+    background-color: #eaeaff;
+}
+
+.table-phones tr:nth-of-type(odd) {
+    background-color: rgb(255, 255, 255);
 }

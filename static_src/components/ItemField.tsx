@@ -126,17 +126,15 @@ export default class ItemField extends React.Component<{},ItemFieldState> {
         itemElements.reverse();
         //отрисовываем таблицу целиком
         let answer: React.ReactElement = <div className="layout">
-                {/* { addItem } */}
-                <SimpleDialogDemo 
-                    // id={index}
-                    handleChangeAdd={this.handleChangeAdd}
-                    inputAddItem={this.state.inputAddItem}
-                    handleKeyUpAddOrder={this.handleKeyUpAddOrder}
-                    handleClickAddItem={this.handleClickAddItem}
-                />
-                <div className="item-field">
-                   { itemElements }
-                </div>
+                    <SimpleDialogDemo 
+                        handleChangeAdd={this.handleChangeAdd}
+                        inputAddItem={this.state.inputAddItem}
+                        handleKeyUpAddOrder={this.handleKeyUpAddOrder}
+                        handleClickAddItem={this.handleClickAddItem}
+                    />
+                <table className={"table-phones"}>
+                        { itemElements }
+                </table>
             </div>  
         return answer;
    }
