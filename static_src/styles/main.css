@@ -1,0 +1,65 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background: url('../../img/phone.png') repeat white;
+    background-attachment: fixed;
+    color: black;
+}
+
+.container {
+    background-color: white;
+    min-height: 60%;
+    width: 750px;
+    margin: 0 auto;
+    padding: 20px;
+    font: 16pt sans-serif;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+.phonebook-header {
+    color: black;
+    text-align: center;
+}
+
+input,
+button {
+    padding: 5px;
+    margin: 5px;
+}
+
+.MuiDialog-container .MuiPaper-root {
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.header-addPhone {
+    text-align: center;
+}
+
+.button-addPhone {
+    margin: 0 auto;
+    width: 200px;
+}
+
+.wrp-buttton-addPhone {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.layout {
+    width: 100%;
+}
+
+.dialog-addPhone-wrp-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

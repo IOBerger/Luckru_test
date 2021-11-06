@@ -14,18 +14,18 @@ module.exports = {
 
     module: {
         rules: [{
-            test: /\.tsx$/,
-            exclude: [/node_modules/],
-            loader: 'ts-loader'
-        }, ],
-        loaders: [{
+                test: /\.tsx$/,
+                exclude: [/node_modules/],
+                loader: 'ts-loader'
+            },
+            {
                 test: /\.js/,
                 loader: 'babel',
                 exclude: /(node_modules|bower_components)/
             },
             {
                 test: /\.css$/,
-                loader: 'style!css'
+                use: ['style-loader', 'css-loader'],
             }
         ]
     },
