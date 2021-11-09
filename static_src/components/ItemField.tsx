@@ -56,7 +56,30 @@ export default class ItemField extends React.Component<{},ItemFieldState> {
         }
     };
     //непосредственно добавление заявки
-    addOrder = (item:Item) => {        
+     addOrder = async (item:Item) => {        
+        // let user = {
+        //     name: 'John',
+        //     surname: 'Smith'
+        // };
+          
+        let response = await fetch('pages/add-phone.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(item)
+        });
+          
+        if (response.ok){
+            let result = await response.json();
+            alert(result.result);
+            // if(){
+
+            // }        
+        }else{
+            alert('error in adding phone');
+        }
+
         this.setState({ 
             items: [ 
                 ...this.state.items, new Item(item.name,item.phone,item.comments)
