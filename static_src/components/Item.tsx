@@ -1,26 +1,26 @@
+//функция, проверяющая телефон на соответствие стандарту
 function validatePhone(phone:string):boolean{
     let answer=/^\s*((\+7)|8)\s*\(?\s*\d{3}\s*\)?\s*\d{3}\s*\-?\d{2}\s*\-?\d{2}\s*$/.test(phone);
-    console.log('phone='+phone+' answer='+answer);
     return answer;
 }
 
 export default class Item{
+    id: number;//id в базе данных
     name: string;//имя человека
     phone: string;//телефон
     comments:string;//комментарии    
-    constructor(name:string,phone:string,comments:string){
+    constructor(name:string,phone:string,comments:string,id:number){
         this.name=name;
         this.phone=phone;
         this.comments=comments;
+        this.id=id;
     };
     checkValues (){
-        console.log('this');
-        console.log(this);
-        if(this.name.trim()===''){//обрезаем пробелы в названии компании и проверяем, не пусто ли
+        if(this.name.trim()===''){//обрезаем пробелы в названии имени и проверяем, не пусто ли
             console.log('wrong name');
             return false;
         }
-        if(!validatePhone(this.phone)){
+        if(!validatePhone(this.phone)){//проверяем телефон
             console.log('wrong phone');
             return false;
         }

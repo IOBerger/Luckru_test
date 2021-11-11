@@ -4,31 +4,29 @@ import Item from "./Item"
 type ItemProps = {//типы свойств компонента
     key: number,
     id: number,
-    item:Item,//Заявка
+    item:Item,//телефон и данные
     deleteItem:(id: number) => void,//функция удаления
-    changeEditIndex:(id: number) => void,//Изменить индекс заявки, которую меняем
-    editIndex:number,//Индекс заявки, которую меняем
-    editItem:(id: number, item:Item) => void,//функция изменения заявки
+    changeEditIndex:(id: number) => void,//Изменить индекс телефона, который меняем
+    editIndex:number,//Индекс телефона, который меняем
+    editItem:(id: number, item:Item) => void,//функция изменения телефона
     inputEditItem:Item,//в объекте хранится то, что прямо сейчас в формах
-    //функции, сохраняющие изменения в формах
-    changeEditInput: (event:any) => void,
+    changeEditInput: (event:any) => void, //функция, сохраняющая изменения в формах
 }
 
-//компонент, рисующий одну заявку
+//компонент, рисующий один телефон
 export default class ItemComponent extends React.Component<ItemProps,{}> {
     editByEnter = (event: any, resultItem:Item) => {
         if (event.keyCode === 13) { // Enter
             this.props.editItem(this.props.id,resultItem);
         }
     };
-   render():React.ReactNode {
+    render():React.ReactNode {
         let itemText : React.ReactNode;  
         let resultItem:Item;
         let editOkButton:React.ReactNode=null;
         if(this.props.editIndex!==this.props.id){
-            //рисуем заявку в обычном случае
+            //рисуем телефон в обычном случае
             itemText= <>  
-                
                     <td className={"table-phones-cell"}>{ this.props.item.name }</td> 
                     <td className={"table-phones-cell"}>{ this.props.item.phone } </td>
                     <td className={"table-phones-cell"}>{ this.props.item.comments }</td>
@@ -38,14 +36,15 @@ export default class ItemComponent extends React.Component<ItemProps,{}> {
                 this.props.inputEditItem.name,
                 this.props.inputEditItem.phone,
                 this.props.inputEditItem.comments,
+                this.props.inputEditItem.id
             );
+            //кнопка сохранить изменения
             editOkButton=      
                 <button
                         onClick={ () => this.props.editItem(this.props.id,resultItem) }
                 >
                     ОК
                 </button>
-
             itemText= <> 
                  <td className={"table-phones-cell"}>
                 <input 
@@ -71,12 +70,10 @@ export default class ItemComponent extends React.Component<ItemProps,{}> {
                     onKeyUp={ (event) => this.editByEnter(event,resultItem) } 
                     name='comments'
                 />
-                
                 </td>
                 
             </>
         }
-      
         //рисуем кнопки редактировать-изменить
         return <><tr>{itemText} 
                 <td className={"table-phones-cell"}>                
@@ -88,8 +85,6 @@ export default class ItemComponent extends React.Component<ItemProps,{}> {
                 <button onClick={ () => this.props.deleteItem(this.props.id) }>Удалить</button>
                 </td>
                 </tr>
-
             </>
-                
    }
 }

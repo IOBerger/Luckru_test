@@ -1,26 +1,29 @@
 <?php
-$array = [ 	
-    [
-        'name' => 'Бергер Ирина Олеговна',
-        'phone' => '+79226179017', 
-        'comments' => 'номер хорошего человека'
-    ],[
-        'name' => 'Вернер Софья Вениаминовна',
-        'phone' => '+79226179019', 
-        'comments' => 'номер ещё хорошего человека'
-    ],[
-        'name' => 'Штирлиц Макс',
-        'phone' => '+79226179010', 
-        'comments' => 'номер Штирлица'
-    ],[
-        'name' => 'Лалуленков Лелуш Ламперуж',
-        'phone' => '+79226179014', 
-        'comments' => 'номер аниме-персонажа'
-    ]
-];
- 
-$json = json_encode($array, JSON_UNESCAPED_UNICODE);
 header('Content-Type: application/json');
+
+//включаем конфигурационный файл
+include('config.php');
+
+//достаём записи
+$conn = new mysqli($host, $username, $password, $database);
+if($conn->connect_error){
+    $array=['code'=>2];
+}
+
+$sql = 'SELECT * FROM phonebook';
+if($result = $conn->query($sql)){
+    $i=0;
+    foreach($result as $row){
+        $array[$i]=$row;
+        $i++;
+    }
+}else{
+    $array=['code'=>2];
+}
+$conn->close();
+
+//кодируем и посылаем
+$json = json_encode($array, JSON_UNESCAPED_UNICODE);
 echo $json;
 
 ?>

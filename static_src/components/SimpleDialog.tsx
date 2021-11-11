@@ -1,11 +1,10 @@
 import * as React from "react"
 import Item from "./Item"
-import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import AddPhoneForm from './AddPhoneForm';
 
+//Этот код взят с сайта MUI и практически не редактировался
 
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 
@@ -15,15 +14,15 @@ interface SimpleDialogProps {
   onClose: (value: string) => void;
   handleChangeAdd: (event:any)=>void,
   inputAddItem: Item,
-  handleKeyUpAddOrder:(event:any, order:Item, handleClose:any)=>void,
-  handleClickAddItem: (item:Item)=>void,
+  handleKeyUpAddItem:(event:any, Item:Item, handleClose:any)=>void,
+  handleClickAddItem: (item:Item,handleClose:any)=>void,
 }
 
 interface SimpleDialogDemoProps {
   handleChangeAdd: (event:any)=>void,
   inputAddItem: Item,
-  handleKeyUpAddOrder:(event:any, order:Item, handleClose:any)=>void,
-  handleClickAddItem: (item:Item)=>void,
+  handleKeyUpAddItem:(event:any, Item:Item, handleClose:any)=>void,
+  handleClickAddItem: (item:Item, handleClose:any)=>void,
 }
 
 function SimpleDialog(props: SimpleDialogProps) {
@@ -42,7 +41,7 @@ function SimpleDialog(props: SimpleDialogProps) {
       <AddPhoneForm
          handleChangeAdd={props.handleChangeAdd}
          inputAddItem={props.inputAddItem}
-         handleKeyUpAddOrder={props.handleKeyUpAddOrder}
+         handleKeyUpAddItem={props.handleKeyUpAddItem}
          handleClickAddItem={props.handleClickAddItem}
          handleClose={handleClose}
       >
@@ -75,7 +74,7 @@ export default function SimpleDialogDemo(props: SimpleDialogDemoProps) {
         onClose={handleClose}
         handleChangeAdd={props.handleChangeAdd}
         inputAddItem={props.inputAddItem}
-        handleKeyUpAddOrder={props.handleKeyUpAddOrder}
+        handleKeyUpAddItem={props.handleKeyUpAddItem}
         handleClickAddItem={props.handleClickAddItem}
 
       />

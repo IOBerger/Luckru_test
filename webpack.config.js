@@ -33,5 +33,5 @@ module.exports = {
         modules: [`${__dirname}/static_src`, 'node_modules'],
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
-
+    //watch: true
 };
